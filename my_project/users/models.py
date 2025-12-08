@@ -4,20 +4,21 @@ from django.db import models
 
 # Create your models here.
 
-
+"""Models for selecting genders """
 class Genders(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
-
+"""Model to connect country with user to choose"""
 class Country(models.Model):
     country_name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.country_name
 
+"""Custom User model """
 class CustomUser(AbstractUser):
     gender = models.ForeignKey(
         Genders,
