@@ -1,7 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, CreateView
+from rest_framework.reverse import reverse_lazy
 
+from core.forms import AddPostForm
 from core.models import Post
 
 # Create your views here.
@@ -21,5 +23,7 @@ class MainPageView(TemplateView):
             context['posts'] = Post.objects.all()[:10]
         return context
 
-
-
+class AddPostView(LoginRequiredMixin,CreateView):
+    form_class = AddPostForm
+    template_name = 'add_post.html'
+    success_url = reverse_lazy('welcome')
