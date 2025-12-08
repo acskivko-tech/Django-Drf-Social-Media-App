@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
-from django.forms import forms
+from django import forms
 
 from users.models import CustomUser
 
