@@ -11,8 +11,10 @@ class Genre(models.Model):
     description = models.CharField(max_length=100)
     def __str__(self):
         return self.name
+
+
 """Models blog messages"""
-class BlogMessageModel(models.Model):
+class Post(models.Model):
     title = models.CharField(
         max_length=100
     )
@@ -27,9 +29,15 @@ class BlogMessageModel(models.Model):
         auto_now_add=True
     )
 
+    class Meta:
+        ordering = ['-date']
+
     genre = models.ForeignKey(
         Genre,
         on_delete=models.CASCADE,
         null=True,
         blank=True,
         related_name='messages')
+
+    def __str__(self):
+        return f"{self.title} ({self.author})"

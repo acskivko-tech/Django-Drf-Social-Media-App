@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from core.models import Genre, BlogMessageModel
+from core.models import Genre, Post
 
 
 # Register your models here.
@@ -16,7 +16,7 @@ class GenreAdmin(admin.ModelAdmin):
 
 
 
-@admin.register(BlogMessageModel)
+@admin.register(Post)
 class BlogMessageAdmin(admin.ModelAdmin):
     list_display = ('title','author','content','date','genre')
     list_display_links = ('title',)
